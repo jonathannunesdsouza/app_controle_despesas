@@ -94,6 +94,17 @@ function cadastrarDespesa() {
     botaoModal.className = 'btn btn-success'
     document.getElementById('mensagemBotaoModal').innerHTML = 'Voltar'
     console.log('Dados válidos.')
+
+    botaoModal.onclick = function(ano, mes, dia, tipo, descricao, valor) {
+       document.getElementById('ano').value = ''
+       document.getElementById('mes').value = ''
+       document.getElementById('dia').value = ''
+       document.getElementById('tipo').value = ''
+       document.getElementById('descricao').value = ''
+       document.getElementById('valor').value = ''
+
+    }
+
    } else {
     $('#modalRegistraDespesa').modal('show')
     document.getElementById('tituloMensagemModal').innerHTML = 'Erro na Gravação'
