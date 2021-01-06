@@ -63,10 +63,11 @@ function cadastrarDespesa() {
    )
 
    if(despesa.validarDados()) {
-    //    bd.gravar(despesa)
+    bd.gravar(despesa)
+    $('#sucessoGravacao').modal('show')
     console.log('Dados válidos.')
    } else {
-    console.log('Dados inválidos.')
+    $('#erroGravacao').modal('show')
    }
 
    
