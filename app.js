@@ -64,10 +64,24 @@ function cadastrarDespesa() {
 
    if(despesa.validarDados()) {
     bd.gravar(despesa)
-    $('#sucessoGravacao').modal('show')
+    $('#modalRegistraDespesa').modal('show')
+    document.getElementById('tituloMensagemModal').innerHTML = 'Registros inseridos com sucesso'
+    let tituloMensagemModal = document.getElementById('modal')
+    tituloMensagemModal.className = 'modal-header text-success'
+    document.getElementById('mensagemModal').innerHTML = 'Despesa foi cadastrada com sucesso.'
+    let botaoModal = document.getElementById('botaoModal')
+    botaoModal.className = 'btn btn-success'
+    document.getElementById('mensagemBotaoModal').innerHTML = 'Voltar'
     console.log('Dados válidos.')
    } else {
-    $('#erroGravacao').modal('show')
+    $('#modalRegistraDespesa').modal('show')
+    document.getElementById('tituloMensagemModal').innerHTML = 'Erro na Gravação'
+    let tituloMensagemModal = document.getElementById('modal')
+    tituloMensagemModal.className = 'modal-header text-danger'
+    document.getElementById('mensagemModal').innerHTML = 'Alguns campos obrigatórios não foram preenchidos.'
+    let botaoModal = document.getElementById('botaoModal')
+    botaoModal.className = 'btn btn-danger'
+    document.getElementById('mensagemBotaoModal').innerHTML = 'Voltar e corrigir'
    }
 
    
