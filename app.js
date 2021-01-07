@@ -76,10 +76,25 @@ class Bd {
             despesasFiltradas = despesasFiltradas.filter(d => d.ano == despesa.ano)
         }
         //mes
+        if(despesa.mes != '') {
+            despesasFiltradas = despesasFiltradas.filter(d => d.mes == despesa.mes)
+        }
         //dia
+        if(despesa.dia != '') {
+            despesasFiltradas = despesasFiltradas.filter(d => d.dia == despesa.dia)
+        }
         //tipo
+        if(despesa.tipo != '') {
+            despesasFiltradas = despesasFiltradas.filter(d => d.tipo == despesa.tipo)
+        }
         //descricao
+        if(despesa.descricao != '') {
+            despesasFiltradas = despesasFiltradas.filter(d => d.descricao == despesa.descricao)
+        }
         //valor
+        if(despesa.valor != '') {
+            despesasFiltradas = despesasFiltradas.filter(d => d.valor == despesa.valor)
+        }
     }
 
 }
@@ -193,6 +208,46 @@ function pesquisarDespesa() {
 
     let despesa = new Despesa(ano, mes, dia, tipo, descricao, valor)
 
-    bd.pesquisar(despesa)
+    let despesas = bd.pesquisar(despesa)
+
+    //selecinando o tbody da página consulta.html
+    let listaDespesas = document.getElementById('listaDespesas')
+
+    despesas.forEach(function(d) {
+
+        console.log(d)
+        //criando linha/tr
+        
+        let linha = listaDespesas.insertRow()
+
+        //criando colunas/td
+
+        linha.insertCell(0).innerHTML = `${d.dia}/${d.mes}/ ${d.ano}`
+
+        //ajustar o tipo da despesa
+
+        switch(d.tipo) {
+            case '1': d.tipo = 'Alimentação'
+                break
+            case '2': d.tipo = 'Educação'
+                break
+            case '3': d.tipo = 'Lazer'
+                break
+            case '4': d.tipo = 'Saúde'
+                break
+            case '5': d.tipo = 'Transporte'
+                break
+        }
+
+        linha.insertCell(1).innerHTML = d.tipo
+        linha.insertCell(2).innerHTML = d.descricao
+        linha.insertCell(3).innerHTML = d.valor
+        
+
+
+    })
+    
+
+    
 }
 
