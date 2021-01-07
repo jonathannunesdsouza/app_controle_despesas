@@ -63,7 +63,23 @@ class Bd {
     }
     
     pesquisar(despesa) {
-        console.log(despesa)
+
+        let despesasFiltradas = Array()
+
+        despesasFiltradas = this.recuperarTodosRegistros()
+
+        console.log(despesasFiltradas)
+
+        //filtros: 
+        //ano
+        if(despesa.ano != '') {
+            despesasFiltradas = despesasFiltradas.filter(d => d.ano == despesa.ano)
+        }
+        //mes
+        //dia
+        //tipo
+        //descricao
+        //valor
     }
 
 }
